@@ -1,1 +1,1 @@
-prisma-ru
+Exploration of Nexus w/ Prisma
