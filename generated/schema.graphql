@@ -10,27 +10,15 @@ type AggregateUser {
   count: Int!
 }
 
-type BatchPayload {
-  count: Long!
-}
-
 scalar DateTime
 
-scalar Long
-
 type Mutation {
-  createPost(data: PostCreateInput!): Post!
+  createDraft(content: String, title: String): Post!
   createUser(data: UserCreateInput!): User!
-  deleteManyPosts(where: PostWhereInput): BatchPayload!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
   deletePost(where: PostWhereUniqueInput!): Post
   deleteUser(where: UserWhereUniqueInput!): User
-  updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  Publish(id: ID): Post
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  upsertPost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
-  upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
 
 type PageInfo {
@@ -54,14 +42,6 @@ type PostConnection {
   aggregate: AggregatePost!
   edges: [PostEdge!]!
   pageInfo: PageInfo!
-}
-
-input PostCreateInput {
-  author: UserCreateOneWithoutPostsInput!
-  content: String
-  id: ID
-  published: Boolean
-  title: String!
 }
 
 input PostCreateManyWithoutAuthorInput {
@@ -162,20 +142,7 @@ input PostScalarWhereInput {
   updatedAt_not_in: [DateTime!]
 }
 
-input PostUpdateInput {
-  author: UserUpdateOneRequiredWithoutPostsInput
-  content: String
-  published: Boolean
-  title: String
-}
-
 input PostUpdateManyDataInput {
-  content: String
-  published: Boolean
-  title: String
-}
-
-input PostUpdateManyMutationInput {
   content: String
   published: Boolean
   title: String
@@ -296,7 +263,6 @@ type Query {
 }
 
 type User {
-  email: String!
   id: ID!
   name: String
   posts(after: String, before: String, first: Int, last: Int, orderBy: PostOrderByInput, skip: Int, where: PostWhereInput): [Post!]
@@ -313,17 +279,6 @@ input UserCreateInput {
   id: ID
   name: String
   posts: PostCreateManyWithoutAuthorInput
-}
-
-input UserCreateOneWithoutPostsInput {
-  connect: UserWhereUniqueInput
-  create: UserCreateWithoutPostsInput
-}
-
-input UserCreateWithoutPostsInput {
-  email: String!
-  id: ID
-  name: String
 }
 
 type UserEdge {
@@ -348,28 +303,6 @@ input UserUpdateInput {
   email: String
   name: String
   posts: PostUpdateManyWithoutAuthorInput
-}
-
-input UserUpdateManyMutationInput {
-  email: String
-  name: String
-}
-
-input UserUpdateOneRequiredWithoutPostsInput {
-  connect: UserWhereUniqueInput
-  create: UserCreateWithoutPostsInput
-  update: UserUpdateWithoutPostsDataInput
-  upsert: UserUpsertWithoutPostsInput
-}
-
-input UserUpdateWithoutPostsDataInput {
-  email: String
-  name: String
-}
-
-input UserUpsertWithoutPostsInput {
-  create: UserCreateWithoutPostsInput!
-  update: UserUpdateWithoutPostsDataInput!
 }
 
 input UserWhereInput {
