@@ -18,3 +18,4 @@ services:
             password: ''
             ssl: false
             port: '5432'
+            migrations: true

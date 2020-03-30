@@ -1,0 +1,31 @@
+{
+  "name": "prisma-ru",
+  "version": "1.0.0",
+  "description": "Exploration of Nexus w/ Prisma",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rurich-shiftpixy/prisma-ru.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rurich-shiftpixy/prisma-ru/issues"
+  },
+  "homepage": "https://github.com/rurich-shiftpixy/prisma-ru#readme",
+  "dependencies": {
+    "graphql": "^14.6.0",
+    "graphql-yoga": "^1.18.3",
+    "nexus": "^0.12.0-rc.14",
+    "nexus-prisma": "^0.11.1",
+    "prisma-client-lib": "^1.34.10"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  }
+}
