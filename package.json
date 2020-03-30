@@ -4,7 +4,7 @@
   "description": "Exploration of Nexus w/ Prisma",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node-dev --no-notify --respawn --transpileOnly ./"
   },
   "repository": {
     "type": "git",
